@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Claude scientific skills from K-Dense Inc",
-    "version": "2.16.1"
+    "version": "2.17.0"
   },
   "plugins": [
     {
@@ -75,6 +75,7 @@
         "./scientific-skills/qutip",
         "./scientific-skills/rdkit",
         "./scientific-skills/scanpy",
+        "./scientific-skills/scrna-seq-analysis",
         "./scientific-skills/scikit-bio",
         "./scientific-skills/scikit-learn",
         "./scientific-skills/scikit-survival",
