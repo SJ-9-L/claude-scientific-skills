@@ -570,6 +570,11 @@ Publication-quality figure generation:
 - `cell_type_markers.md`: 범용 cell type marker 데이터베이스
 - `universal_pathway_templates.md`: 어떤 pathway에도 적용 가능한 figure 템플릿
 
+#### Disease-Specific & Clinical (질환별/임상)
+- `disease_specific_templates.md`: Cancer, Immune, Cardiovascular 질환별 분석 템플릿
+- `end_to_end_workflows.md`: 실제 데이터 기반 전체 워크플로우 예제
+- `result_interpretation_guide.md`: 결과 해석 및 Nature/Cell/Science급 논문 작성 가이드
+
 ## Example Use Cases
 
 ### Use Case 1: Novel Endothelial Marker Discovery
