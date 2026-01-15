@@ -554,6 +554,21 @@ Publication-quality figure generation:
 - Result aggregation
 - Evidence scoring
 
+### scripts/interaction_query_engine.py
+Universal molecular interaction query:
+- STRING, Reactome, KEGG, UniProt, SIGNOR, ChEMBL API 통합
+- Any molecule type 지원 (gene, protein, ligand, receptor, TF, chemical, cytokine, chemokine)
+- Upstream/downstream interaction 자동 분류
+- Crosstalk 및 pathway context 분석
+
+### scripts/ko_phenotype_predictor.py
+KO phenotype prediction:
+- MGI, IMPC, HPO 데이터베이스 통합
+- Network-based phenotype 예측
+- Downstream cascade effect 분석
+- Compensatory mechanism 식별
+- Severity scoring 및 실험 추천
+
 ### references/
 
 #### Core Analysis Guides
@@ -574,6 +589,9 @@ Publication-quality figure generation:
 - `disease_specific_templates.md`: Cancer, Immune, Cardiovascular 질환별 분석 템플릿
 - `end_to_end_workflows.md`: 실제 데이터 기반 전체 워크플로우 예제
 - `result_interpretation_guide.md`: 결과 해석 및 Nature/Cell/Science급 논문 작성 가이드
+
+#### Molecular Interaction System (분자 상호작용 시스템)
+- `molecular_interaction_system.md`: 포괄적 분자 상호작용 데이터베이스 구조 및 KO 예측 엔진
 
 ## Example Use Cases
 
