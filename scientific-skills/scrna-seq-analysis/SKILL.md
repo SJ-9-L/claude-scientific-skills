@@ -555,12 +555,20 @@ Publication-quality figure generation:
 - Evidence scoring
 
 ### references/
+
+#### Core Analysis Guides
 - `scrna_analysis_pipeline.md`: Detailed scRNA-seq analysis guide
 - `pathway_deep_dive.md`: Experimental evidence categories
 - `database_integration.md`: All database APIs and queries
 - `competitive_analysis.md`: Literature and trend analysis
 - `figure_generation.md`: Figure style guide and templates
-- `molecular_tools.md`: Antibodies, siRNAs, inhibitors reference
+
+#### Universal Systems (범용 시스템)
+- `universal_phenotype_database.md`: MGI, IMPC, HPO 통합 phenotype 조회
+- `experiment_design_templates.md`: KO 비교, treatment 실험 설계 템플릿
+- `molecular_tools_discovery.md`: Antibodies, inhibitors, siRNAs 자동 검색
+- `cell_type_markers.md`: 범용 cell type marker 데이터베이스
+- `universal_pathway_templates.md`: 어떤 pathway에도 적용 가능한 figure 템플릿
 
 ## Example Use Cases
 
@@ -616,6 +624,80 @@ figure.create_combination_therapy_schematic(
     compensatory_pathways=compensatory,
     drug_targets=targets
 )
+```
+
+## Universal System Usage (범용 시스템 사용법)
+
+### Any Gene Phenotype Query
+```python
+from references.universal_phenotype_database import UniversalPhenotypeDB
+
+db = UniversalPhenotypeDB()
+
+# Query phenotypes for ANY gene
+phenotypes = db.get_phenotypes("BRAF", species="mouse")
+
+# Compare KO phenotypes across multiple genes
+comparison = db.compare_ko_phenotypes(
+    genes=["BRAF", "KRAS", "NRAS"],
+    phenotype_focus="cancer"
+)
+```
+
+### Universal Experiment Design
+```python
+from references.experiment_design_templates import KOComparisonExperiment
+
+# Design KO comparison for ANY genes
+exp = KOComparisonExperiment(
+    target_genes=["JAK1", "JAK2", "JAK3"],
+    species="mouse",
+    context="inflammation"
+)
+
+design = exp.generate_design()
+# Auto-generates: groups, controls, phenotypes, timeline, statistics
+```
+
+### Auto-Discover Molecular Tools
+```python
+from references.molecular_tools_discovery import MolecularToolsDiscovery
+
+discovery = MolecularToolsDiscovery()
+
+# Find ALL tools for ANY target
+tools = discovery.find_all_tools("EGFR", species="human")
+# Returns: antibodies, inhibitors, siRNAs, CRISPR reagents, etc.
+
+# Generate reagent report
+report = discovery.generate_tools_report("NOTCH1")
+```
+
+### Cell Type Annotation
+```python
+from references.cell_type_markers import CellTypeMarkerDB
+
+db = CellTypeMarkerDB()
+
+# Get markers for ANY cell type
+markers = db.get_markers("macrophage", subtype="M2")
+
+# Identify cell type from expression
+matches = db.find_cell_type_by_markers(["CD68", "CD163", "MRC1"])
+
+# Auto-annotate scRNA-seq clusters
+annotations = auto_annotate_clusters(adata, tissue="liver")
+```
+
+### Universal Pathway Figures
+```python
+from references.universal_pathway_templates import UniversalPathwayFigure
+
+# Create figure for ANY pathway
+fig = UniversalPathwayFigure(pathway_type="RTK_signaling")
+
+# Works for: VEGF, EGF, FGF, PDGF, Insulin, etc.
+# Also: Notch, Wnt, TGF-β, NF-κB, JAK-STAT, Hippo, MAPK, PI3K-AKT...
 ```
 
 ## Integration with Other Skills
